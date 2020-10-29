@@ -1,4 +1,5 @@
 ﻿using System;
+using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,6 +22,41 @@ namespace ATIVIDADE_1
                 Server.Transfer("MenuInicial.aspx");
             }
             Server.Transfer("semSenha.html");
+        }
+    }
+
+    public class Conexao
+    {
+        public string conec = @"SERVER=aulabanco.mysql.dbaas.com.br; DATABASE=aulabanco; UID=aulabanco; PWD=Tilo7110; PORT=3306";
+        public MySqlConnection con = null;
+
+        public void AbrirCon()
+        {
+            try
+            {
+                con = new MySqlConnection(conec);
+                con.Open();
+                HttpContext.Current.Response.Write("Conectado com Sucesso");
+            }
+            catch (Exception ex)
+            {
+
+                HttpContext.Current.Response.Write("Erro ao conectar" + ex);
+            }
+        }
+        public void FecharCon()
+        {
+            try
+            {
+                con = new MySqlConnection(conec);
+                con.Close();
+                HttpContext.Current.Response.Write("Fechado com Sucesso");
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

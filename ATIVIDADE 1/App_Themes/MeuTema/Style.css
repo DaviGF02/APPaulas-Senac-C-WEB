@@ -1,7 +1,12 @@
 ﻿body {
+    text-align: center;
+    padding: 10%;
+    background-color: lightsteelblue;
+}
+
+.menuinicial{
+    background-color: blanchedalmond;
     
 }
 
-#form1{
-    position: center;
-}
+
